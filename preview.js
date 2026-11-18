@@ -7,11 +7,12 @@ const compact = matchMedia('(max-width: 740px)');
 let active = cards[0];
 const fitOnDesktop = matchMedia('(min-width: 1050px) and (min-height: 700px)');
 let contentObserver;
+let observedBody;
 let pendingFit;
 
 function resizeDemo() {
   pendingFit = undefined;
-  const body = frame.contentDocument?.body;
+  const body = observedBody;
   if (!body) return;
 
   const heightAt = (zoom) => {
@@ -44,7 +45,8 @@ function scheduleFit() {
 function watchDemo() {
   contentObserver?.disconnect();
   const doc = frame.contentDocument;
-  if (!doc?.body) return;
+  observedBody = doc?.body;
+  if (!observedBody) return;
   contentObserver = new MutationObserver(scheduleFit);
   contentObserver.observe(doc.body, {
     subtree: true, childList: true, characterData: true, attributes: true,
@@ -66,7 +68,7 @@ function select(card, focusPreview = false) {
     title.textContent = name + ' live demo';
     frame.title = name + ' live demo';
     contentObserver?.disconnect();
-    frame.style.removeProperty('height');
+    observedBody = undefined;
     frame.src = card.dataset.url;
     external.href = card.dataset.url;
     caseLink.href = './case-studies.html#' + card.dataset.project;
