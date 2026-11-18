@@ -3,12 +3,6 @@ const frame = document.querySelector('#demo-frame');
 const title = document.querySelector('#preview-title');
 const external = document.querySelector('#open-demo');
 const caseLink = document.querySelector('#read-case');
-const task = document.querySelector('#demo-task');
-const tasks = {
-  carepath: 'Choose a question, then follow the guided path to the intake.',
-  dentaldesk: 'Pick a visit and a sample time, then review the request.',
-  shiftledger: 'Load example hours, check the net time, and verify the saved entry in Manager view.',
-};
 const compact = matchMedia('(max-width: 740px)');
 let active = cards[0];
 const fitOnDesktop = matchMedia('(min-width: 1050px) and (min-height: 700px)');
@@ -74,7 +68,6 @@ function select(card, focusPreview = false) {
     active = card;
     for (const item of cards) item.setAttribute('aria-pressed', String(item === card));
     const name = card.querySelector('strong').textContent;
-    task.textContent = tasks[card.dataset.project];
     title.textContent = name + ' live demo';
     frame.title = name + ' live demo';
     contentObserver?.disconnect();

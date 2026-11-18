@@ -6,7 +6,7 @@
   <meta name="description" content="Three case studies by Wesley Bertolaia in consultation acquisition, patient booking, and employee onboarding.">
   <title>Case Studies | Wesley Bertolaia</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=field-notes">
+  <link rel="stylesheet" href="./style.css?v=project-desk">
 </head>
 <body>
   <header class="wrap top">
@@ -26,27 +26,19 @@
       <article class="case case-dental" id="dentaldesk">
         <header><p class="eyebrow">Patient booking · Angular</p><h2>DentalDesk</h2></header>
         <section><h3>Friction</h3><p>Patients may hesitate to share details before seeing available times and knowing when the clinic will confirm.</p></section>
-        <section><h3>What I built</h3><p>A guided request with all sample times visible together before review. I tested that the visit type and time are kept when a visitor goes back.</p></section>
+        <section><h3>What I built</h3><p>A guided request that shows sample times before review. I tested that the visit type and time are kept when a visitor goes back.</p></section>
         <section><h3>What I’d measure</h3><p>Submitted requests per eligible session for a request-first offer versus a time-first offer. Check confirmed visits as a follow-up.</p></section>
         <div class="links"><a class="button" href="./?demo=dentaldesk#demos">Try the demo</a><a href="https://wesleybertolaia.github.io/dentaldesk/patient.html?offer=times">Offer variant</a><a href="https://github.com/wesleybertolaia/dentaldesk">Source</a></div>
       </article>
       <article class="case case-shift" id="shiftledger">
         <header><p class="eyebrow">Employee onboarding · React</p><h2>ShiftLedger</h2></header>
         <section><h3>Friction</h3><p>New employees may be unsure how to log breaks. Managers need a clear view of recorded time.</p></section>
-        <section><h3>What I built</h3><p>A first-shift form with editable examples, a live net-time preview, and a team breakdown. In a browser test, saving the example moved the manager total from 24h 30m to 26h.</p></section>
+        <section><h3>What I built</h3><p>A first-shift form with editable examples and validation. In a browser test, saving the example moved the manager total from 24h 30m to 26h.</p></section>
         <section><h3>What I’d measure</h3><p>Valid first saves per new employee session. Check time to save, errors, and accidental acceptance of the example.</p></section>
         <div class="links"><a class="button" href="./?demo=shiftledger#demos">Try the demo</a><a href="https://github.com/wesleybertolaia/shiftledger">Source</a></div>
       </article>
     </div>
     <p class="evidence">These prototypes use sample data. Conversion tests are proposed.</p>
-    <details class="research">
-      <summary>Design references</summary>
-      <ul>
-        <li>CarePath uses a single question and explains the handoff to a care team. <a href="https://service-manual.nhs.uk/design-system/patterns/question-pages">NHS question pages</a> · <a href="https://www.boltpharmacy.co.uk/faq">Bolt Pharmacy consultation FAQ</a></li>
-        <li>DentalDesk exposes appointment times as choices before the request. <a href="https://www.zocdoc.com/patient-help/en/articles/8724858-how-do-i-make-an-appointment">Zocdoc booking flow</a></li>
-        <li>ShiftLedger separates entering time from team review. <a href="https://clockify.me/features/timesheet">Clockify timesheets</a></li>
-      </ul>
-    </details>
   </main>
 </body>
 </html>
