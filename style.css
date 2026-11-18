@@ -42,7 +42,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .preview-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding: .7rem 1rem; }
 .preview-bar h2 { font-size: 1rem; }
 .preview-bar a { font-size: .875rem; color: var(--lime); }
-iframe { display: block; width: 100%; height: clamp(470px, 66vh, 760px); border: 0; border-top: 1px solid var(--line); background: #f8f3ec; color-scheme: light; }
+iframe { display: block; width: 100%; height: 640px; border: 0; border-top: 1px solid var(--line); background: #f8f3ec; color-scheme: light; }
 :focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
 #work { margin-top: clamp(2rem, 5vw, 4rem); }
 #work > h2 { font-size: 1.45rem; border-top: 1px solid var(--line); padding: 1rem 0; }
@@ -66,7 +66,7 @@ iframe { display: block; width: 100%; height: clamp(470px, 66vh, 760px); border:
   .hero, .shelf { grid-template-columns: 1fr; }
   .hero { row-gap: .55rem; }
   .project-card { min-height: 76px; }
-  iframe { height: 68vh; min-height: 430px; }
+  iframe { height: 520px; }
 }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }

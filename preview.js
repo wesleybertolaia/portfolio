@@ -5,6 +5,25 @@ const external = document.querySelector('#open-demo');
 const caseLink = document.querySelector('#read-case');
 const compact = matchMedia('(max-width: 740px)');
 let active = cards[0];
+let sizeObserver;
+
+function fitDemo() {
+  sizeObserver?.disconnect();
+  const body = frame.contentDocument?.body;
+  if (!body) return;
+
+  const resize = () => {
+    const height = Math.ceil(Math.max(body.getBoundingClientRect().height, body.scrollHeight));
+    if (height > 0) frame.style.height = height + 'px';
+  };
+
+  resize();
+  sizeObserver = new ResizeObserver(resize);
+  sizeObserver.observe(body);
+}
+
+frame.addEventListener('load', fitDemo);
+if (frame.contentDocument?.readyState === 'complete') fitDemo();
 
 function select(card, focusPreview = false) {
   if (card !== active) {
@@ -13,6 +32,8 @@ function select(card, focusPreview = false) {
     const name = card.querySelector('strong').textContent;
     title.textContent = name + ' live demo';
     frame.title = name + ' live demo';
+    sizeObserver?.disconnect();
+    frame.style.removeProperty('height');
     frame.src = card.dataset.url;
     external.href = card.dataset.url;
     caseLink.href = '#' + card.dataset.project;
