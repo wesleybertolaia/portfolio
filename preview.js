@@ -5,25 +5,58 @@ const external = document.querySelector('#open-demo');
 const caseLink = document.querySelector('#read-case');
 const compact = matchMedia('(max-width: 740px)');
 let active = cards[0];
-let sizeObserver;
+const fitOnDesktop = matchMedia('(min-width: 1050px) and (min-height: 700px)');
+let contentObserver;
+let pendingFit;
 
-function fitDemo() {
-  sizeObserver?.disconnect();
+function resizeDemo() {
+  pendingFit = undefined;
   const body = frame.contentDocument?.body;
   if (!body) return;
 
-  const resize = () => {
-    const height = Math.ceil(Math.max(body.getBoundingClientRect().height, body.scrollHeight));
-    if (height > 0) frame.style.height = height + 'px';
+  const heightAt = (zoom) => {
+    body.style.zoom = zoom;
+    return Math.ceil(body.getBoundingClientRect().height) + 1;
   };
 
-  resize();
-  sizeObserver = new ResizeObserver(resize);
-  sizeObserver.observe(body);
+  let height = heightAt(1);
+  if (fitOnDesktop.matches) {
+    const top = frame.getBoundingClientRect().top + window.scrollY;
+    const available = Math.floor(innerHeight - top - 12);
+    if (height > available) {
+      let low = .6;
+      let high = 1;
+      for (let i = 0; i < 8; i += 1) {
+        const mid = (low + high) / 2;
+        if (heightAt(mid) <= available) low = mid;
+        else high = mid;
+      }
+      height = heightAt(low);
+    }
+  }
+  if (height > 1) frame.style.height = height + 'px';
 }
 
-frame.addEventListener('load', fitDemo);
-if (frame.contentDocument?.readyState === 'complete') fitDemo();
+function scheduleFit() {
+  if (pendingFit === undefined) pendingFit = requestAnimationFrame(resizeDemo);
+}
+
+function watchDemo() {
+  contentObserver?.disconnect();
+  const doc = frame.contentDocument;
+  if (!doc?.body) return;
+  contentObserver = new MutationObserver(scheduleFit);
+  contentObserver.observe(doc.body, {
+    subtree: true, childList: true, characterData: true, attributes: true,
+    attributeFilter: ['hidden', 'class', 'open'],
+  });
+  doc.addEventListener('load', scheduleFit, true);
+  scheduleFit();
+}
+
+window.addEventListener('resize', scheduleFit);
+frame.addEventListener('load', watchDemo);
+if (frame.contentDocument?.readyState === 'complete') watchDemo();
 
 function select(card, focusPreview = false) {
   if (card !== active) {
@@ -32,7 +65,7 @@ function select(card, focusPreview = false) {
     const name = card.querySelector('strong').textContent;
     title.textContent = name + ' live demo';
     frame.title = name + ' live demo';
-    sizeObserver?.disconnect();
+    contentObserver?.disconnect();
     frame.style.removeProperty('height');
     frame.src = card.dataset.url;
     external.href = card.dataset.url;
