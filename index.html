@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wes Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
-  <title>Wes Bertolaia | Web Design & Frontend</title>
+  <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
+  <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./preview.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=project-desk">
+  <script src="./preview.js?v=project-desk" defer></script>
 </head>
 <body>
   <header class="wrap top">
-    <a class="wordmark" href="./" aria-label="Wes Bertolaia home">WB<span>.</span></a>
-    <nav aria-label="Main navigation"><a href="#demos">Projects</a><a href="#work">Case studies</a><a href="https://github.com/wesbertolaia/">GitHub</a></nav>
+    <a class="wordmark" href="./">Wesley Bertolaia</a>
+    <nav aria-label="Main navigation"><a href="#demos">Projects</a><a href="./case-studies.html">Case studies</a><a href="https://github.com/wesbertolaia/">GitHub</a></nav>
   </header>
   <main class="wrap">
     <section class="hero" aria-labelledby="title">
       <p class="eyebrow">WEB DESIGN &amp; FRONTEND</p>
-      <h1 id="title">Wes Bertolaia<span>.</span></h1>
+      <h1 id="title">Wesley Bertolaia<span>.</span></h1>
       <p>Try three working web flows. Each case study explains the problem, what I built, and what I’d measure next.</p>
     </section>
     <section class="shelf" id="demos" aria-label="Live project demos">
@@ -25,79 +25,24 @@
         <h2>Projects</h2>
         <div class="project-cards">
           <button class="project-card" type="button" aria-pressed="true" aria-controls="live-preview" data-project="carepath" data-url="https://wesbertolaia.github.io/carepath/">
-            <strong>CarePath</strong><span>Online consultation funnel</span>
+            <span class="project-copy"><strong>CarePath</strong><span>Online consultation funnel</span></span><span class="project-art art-care" aria-hidden="true"></span>
           </button>
           <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="dentaldesk" data-url="https://wesbertolaia.github.io/dentaldesk/patient.html">
-            <strong>DentalDesk</strong><span>Patient booking · Angular</span>
+            <span class="project-copy"><strong>DentalDesk</strong><span>Patient booking · Angular</span></span><span class="project-art art-dental" aria-hidden="true"></span>
           </button>
           <button class="project-card" type="button" aria-pressed="false" aria-controls="live-preview" data-project="shiftledger" data-url="https://wesbertolaia.github.io/shiftledger/">
-            <strong>ShiftLedger</strong><span>Employee onboarding · React</span>
+            <span class="project-copy"><strong>ShiftLedger</strong><span>Employee onboarding · React</span></span><span class="project-art art-shift" aria-hidden="true"></span>
           </button>
         </div>
       </div>
       <section class="preview-panel" id="live-preview" aria-labelledby="preview-title">
         <header class="preview-bar">
           <h2 id="preview-title" tabindex="-1" aria-live="polite">CarePath live demo</h2>
-          <div class="links"><a id="read-case" href="#carepath">Case study</a><a id="open-demo" href="https://wesbertolaia.github.io/carepath/">Open full site</a></div>
+          <div class="links"><a id="read-case" href="./case-studies.html#carepath">Case study</a><a id="open-demo" href="https://wesbertolaia.github.io/carepath/">Open full site</a></div>
         </header>
         <iframe id="demo-frame" title="CarePath live demo" src="https://wesbertolaia.github.io/carepath/"></iframe>
       </section>
     </section>
-    <section id="work" aria-labelledby="work-title">
-      <h2 id="work-title">Selected work</h2>
-      <article class="case care" id="carepath">
-        <div class="case-intro">
-          <div><p class="eyebrow">Healthcare acquisition · HTML, CSS &amp; JavaScript</p><h3>CarePath</h3>
-          <p>Help someone decide whether to start an online consultation.</p></div>
-          <div class="links">
-            <a class="button primary" href="https://wesbertolaia.github.io/carepath/">Try guided flow</a>
-            <a class="button outline" href="https://wesbertolaia.github.io/carepath/?path=direct">Try direct flow</a>
-            <a href="https://github.com/wesbertolaia/carepath">Source code</a>
-          </div>
-        </div>
-        <div class="case-body">
-          <section><h4>Friction to investigate</h4><p>Some visitors may need to know what they will be asked, who reviews their request, or whether starting a request reserves an appointment.</p></section>
-          <section><h4>Design and build</h4><p>Compare going straight to intake with choosing one question and seeing a tailored explanation. Both paths end at the same intake preview and collect no personal or medical details.</p></section>
-          <section><h4>What I’d test</h4><p>Randomly assign eligible visitors and compare sessions that reach intake divided by eligible landing sessions. Use the guided step events to locate drop-off. In a live service, monitor completed intakes per landing session and time to intake as guardrails.</p></section>
-        </div>
-        <div class="footer-links"><button class="button outline preview" hidden>Try in project panel</button></div>
-      </article>
-      <article class="case dental" id="dentaldesk">
-        <div class="case-intro">
-          <div><p class="eyebrow">Healthcare booking · Angular</p><h3>DentalDesk</h3>
-          <p>Help a prospective patient decide whether to request a dental visit.</p></div>
-          <div class="links">
-            <a class="button primary" href="https://wesbertolaia.github.io/dentaldesk/patient.html">Open booking site</a>
-            <a class="button outline" href="https://wesbertolaia.github.io/dentaldesk/patient.html?offer=times">Open offer variant</a>
-            <a href="https://github.com/wesbertolaia/dentaldesk">Source code</a>
-          </div>
-        </div>
-        <div class="case-body">
-          <section><h4>Friction to investigate</h4><p>A prospective patient may hesitate if they have to share details before seeing what they can book or what happens after submitting.</p></section>
-          <section><h4>Design and build</h4><p>The Angular flow reveals a visit type, sample times, and a review in sequence. It explains when a clinic would confirm the visit and keeps the selected options when patients go back.</p></section>
-          <section><h4>What I’d test</h4><p>Compare a request-first offer with a time-first offer. Keep the flow constant and measure submitted requests per eligible session. Watch for a drop from time selection to review and, in a live service, check that requests turn into confirmed visits.</p></section>
-        </div>
-        <div class="footer-links">
-          <button class="button outline preview" hidden>Try in project panel</button>
-          <a href="https://wesbertolaia.github.io/dentaldesk/">View clinic workspace</a>
-        </div>
-      </article>
-      <article class="case shift" id="shiftledger">
-        <div class="case-intro">
-          <div><p class="eyebrow">Activation · React</p><h3>ShiftLedger</h3>
-          <p>Help an employee record their first valid shift and a manager verify the hours.</p></div>
-          <div class="links"><a class="button primary" href="https://wesbertolaia.github.io/shiftledger/">Open time tracker</a><a href="https://github.com/wesbertolaia/shiftledger">Source code</a></div>
-        </div>
-        <div class="case-body">
-          <section><h4>Friction to investigate</h4><p>A first-time user may be unsure how to enter a break or what counts as a valid shift. A manager needs to see the saved entry and understand how the total was calculated.</p></section>
-          <section><h4>Design and build</h4><p>The React interface explains the inputs and offers editable sample hours before saving. It rejects overlapping shifts and invalid durations. The manager view reflects the saved entry and shows totals after filtering.</p></section>
-          <section><h4>What I’d test</h4><p>Compare guided entry with the same form starting blank. Measure valid first saves per new employee session. Check time to save, validation errors, and accidental acceptance of example values.</p></section>
-        </div>
-        <div class="footer-links"><button class="button outline preview" hidden>Try in project panel</button></div>
-      </article>
-      <p class="evidence"><strong>Evidence.</strong> All three projects use fictional data. In CarePath, both variants reached the same intake preview and emitted the same start event. In a mobile browser check, DentalDesk preserved the selected visit and time when going back. In ShiftLedger, saving the 90-minute example updated the manager’s total from 24h 30m to 26h. Conversion tests with real traffic are proposed.</p>
-    </section>
   </main>
-  <footer class="wrap bottom"><span>Wes Bertolaia</span><a href="https://github.com/wesbertolaia/">GitHub</a></footer>
 </body>
 </html>

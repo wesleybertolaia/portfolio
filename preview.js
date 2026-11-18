@@ -69,7 +69,7 @@ function select(card, focusPreview = false) {
     frame.style.removeProperty('height');
     frame.src = card.dataset.url;
     external.href = card.dataset.url;
-    caseLink.href = '#' + card.dataset.project;
+    caseLink.href = './case-studies.html#' + card.dataset.project;
   }
   if (focusPreview) title.focus();
 }
@@ -77,10 +77,11 @@ function select(card, focusPreview = false) {
 for (const card of cards) {
   card.addEventListener('click', () => select(card, compact.matches));
 }
-for (const button of document.querySelectorAll('.preview')) {
-  const card = cards.find(item => item.dataset.project === button.closest('article').id);
-  if (card) {
-    button.hidden = false;
-    button.addEventListener('click', () => select(card, true));
-  }
+const legacyHash = location.hash.slice(1);
+if (legacyHash === 'work' || cards.some(card => card.dataset.project === legacyHash)) {
+  location.replace('./case-studies.html' + (legacyHash === 'work' ? '' : '#' + legacyHash));
+} else {
+  const wanted = new URLSearchParams(location.search).get('demo');
+  const requested = cards.find(card => card.dataset.project === wanted);
+  if (requested) select(requested);
 }
