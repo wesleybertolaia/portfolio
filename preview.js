@@ -53,6 +53,9 @@ function watchDemo() {
     attributeFilter: ['hidden', 'class', 'open'],
   });
   doc.addEventListener('load', scheduleFit, true);
+  if (doc.URL !== 'about:blank' && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    frame.animate([{opacity: .68}, {opacity: 1}], { duration: 230, easing: 'ease-out' });
+  }
   scheduleFit();
 }
 
