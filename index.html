@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wes Bertolaia’s web design portfolio. Two shipped prototypes in patient booking and employee onboarding.">
+  <title>Wes Bertolaia | Web Design & Frontend</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./preview.js" defer></script>
+</head>
+<body>
+  <header class="wrap top">
+    <a class="wordmark" href="./">Wes Bertolaia</a>
+    <nav aria-label="Main navigation"><a href="#work">Case studies</a><a href="https://github.com/wesbertolaia/">GitHub</a></nav>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">Web design &amp; frontend</p>
+      <h1 id="title">Make the next step clear.</h1>
+      <p>I design and build web flows around the decision a person needs to make. Explore two working prototypes, the reasoning behind them, and what I’d measure next.</p>
+      <a class="button" href="#work">Explore the case studies</a>
+    </section>
+    <section id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected work</h2>
+      <article class="case dental" id="dentaldesk">
+        <div class="case-intro">
+          <div><p class="eyebrow">Healthcare booking · Angular</p><h3>DentalDesk</h3>
+          <p>Help a prospective patient decide whether to request a dental visit.</p></div>
+          <div class="links">
+            <a class="button primary" href="https://wesbertolaia.github.io/dentaldesk/patient.html">Open booking site</a>
+            <a class="button outline" href="https://wesbertolaia.github.io/dentaldesk/patient.html?offer=times">Open offer variant</a>
+            <a href="https://github.com/wesbertolaia/dentaldesk">Source code</a>
+          </div>
+        </div>
+        <figure><img src="./assets/dentaldesk.png" alt="Patient booking page with a visit type selector and a clear next step" width="1280" height="700" loading="lazy"></figure>
+        <div class="case-body">
+          <section><h4>Friction to investigate</h4><p>A prospective patient may hesitate if they have to share details before seeing what they can book or what happens after submitting.</p></section>
+          <section><h4>Design and build</h4><p>The Angular flow reveals a visit type, sample times, and a review in sequence. It explains when a clinic would confirm the visit and keeps the selected options when patients go back.</p></section>
+          <section><h4>What I’d test</h4><p>Compare a request-first offer with a time-first offer. Keep the flow constant and measure submitted requests per eligible session. Watch for a drop from time selection to review and, in a live service, check that requests turn into confirmed visits.</p></section>
+        </div>
+        <div class="footer-links">
+          <button class="button outline preview" data-url="https://wesbertolaia.github.io/dentaldesk/patient.html" data-title="DentalDesk booking preview" hidden>Try inside portfolio</button>
+          <a href="https://wesbertolaia.github.io/dentaldesk/">View clinic workspace</a>
+        </div>
+      </article>
+      <article class="case shift" id="shiftledger">
+        <div class="case-intro">
+          <div><p class="eyebrow">Activation · React</p><h3>ShiftLedger</h3>
+          <p>Help an employee record their first valid shift and a manager verify the hours.</p></div>
+          <div class="links"><a class="button primary" href="https://wesbertolaia.github.io/shiftledger/">Open time tracker</a><a href="https://github.com/wesbertolaia/shiftledger">Source code</a></div>
+        </div>
+        <figure><img src="./assets/shiftledger.png" alt="First-shift onboarding showing the entry form and the option to load example hours" width="1280" height="700" loading="lazy"></figure>
+        <div class="case-body">
+          <section><h4>Friction to investigate</h4><p>A first-time user may be unsure how to enter a break or what counts as a valid shift. A manager needs to see the saved entry and understand how the total was calculated.</p></section>
+          <section><h4>Design and build</h4><p>The React interface explains the inputs and offers editable sample hours before saving. It rejects overlapping shifts and invalid durations. The manager view reflects the saved entry and shows totals after filtering.</p></section>
+          <section><h4>What I’d test</h4><p>Compare guided entry with the same form starting blank. Measure valid first saves per new employee session. Check time to save, validation errors, and accidental acceptance of example values.</p></section>
+        </div>
+        <div class="footer-links"><button class="button outline preview" data-url="https://wesbertolaia.github.io/shiftledger/" data-title="ShiftLedger onboarding preview" hidden>Try inside portfolio</button></div>
+      </article>
+      <p class="evidence"><strong>Evidence.</strong> Both projects are live prototypes with fictional data. The flows were checked in a browser. The test plans above describe how I’d measure conversion with real traffic.</p>
+    </section>
+  </main>
+  <footer class="wrap bottom"><span>Wes Bertolaia</span><a href="https://github.com/wesbertolaia/">GitHub</a></footer>
+  <dialog aria-labelledby="preview-title">
+    <div class="dialog-top"><h2 id="preview-title"></h2><form method="dialog"><button class="button outline">Close preview</button></form></div>
+    <iframe title="Project preview"></iframe>
+  </dialog>
+</body>
+</html>
