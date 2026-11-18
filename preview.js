@@ -1,20 +1,32 @@
-const dialog = document.querySelector('dialog');
-const frame = dialog.querySelector('iframe');
+const cards = [...document.querySelectorAll('.project-card')];
+const frame = document.querySelector('#demo-frame');
 const title = document.querySelector('#preview-title');
-let trigger;
+const external = document.querySelector('#open-demo');
+const caseLink = document.querySelector('#read-case');
+const compact = matchMedia('(max-width: 740px)');
+let active = cards[0];
 
-for (const button of document.querySelectorAll('.preview')) {
-  button.hidden = false;
-  button.addEventListener('click', () => {
-    trigger = button;
-    title.textContent = button.dataset.title;
-    frame.title = button.dataset.title;
-    frame.src = button.dataset.url;
-    dialog.showModal();
-  });
+function select(card, focusPreview = false) {
+  if (card !== active) {
+    active = card;
+    for (const item of cards) item.setAttribute('aria-pressed', String(item === card));
+    const name = card.querySelector('strong').textContent;
+    title.textContent = name + ' live demo';
+    frame.title = name + ' live demo';
+    frame.src = card.dataset.url;
+    external.href = card.dataset.url;
+    caseLink.href = '#' + card.dataset.project;
+  }
+  if (focusPreview) title.focus();
 }
 
-dialog.addEventListener('close', () => {
-  frame.removeAttribute('src');
-  trigger?.focus();
-});
+for (const card of cards) {
+  card.addEventListener('click', () => select(card, compact.matches));
+}
+for (const button of document.querySelectorAll('.preview')) {
+  const card = cards.find(item => item.dataset.project === button.closest('article').id);
+  if (card) {
+    button.hidden = false;
+    button.addEventListener('click', () => select(card, true));
+  }
+}
