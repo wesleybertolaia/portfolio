@@ -6,50 +6,46 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=about-20261119">
-  <script src="./locale.js?v=about-20261119"></script>
-  <script src="./preview.js?v=about-20261119" defer></script>
+  <link rel="stylesheet" href="./style.css?v=dog-stage-v1">
+  <script src="./locale.js?v=dog-stage-v1"></script>
+  <script src="./preview.js?v=dog-stage-v1" defer></script>
   <link rel="stylesheet" href="./locale.css">
+  <script src="./stage.js?v=1" defer></script>
 </head>
 <body>
   <header class="site-nav">
-    <a class="identity" href="./"><strong>Wesley Bertolaia<span>.</span></strong><small>Software Developer</small></a>
-    <nav class="nav-pill" aria-label="Main navigation"><a class="nav-work" href="./#selected-work" aria-current="page">Work</a><a href="./info.html">Info</a></nav>
-    <div class="nav-contact"><a href="https://github.com/wesleybertolaia/">GitHub <span aria-hidden="true">↗</span></a><span data-language-menu></span></div>
+    <a class="identity" href="./" aria-label="Portfolio home"><span class="tiny-flower" aria-hidden="true">✳</span><span>Portfolio</span></a>
+    <nav aria-label="Main navigation"><a href="./#selected-work" aria-current="page">Work</a><a href="./info.html">About</a><span data-language-menu></span></nav>
   </header>
   <main class="wrap">
     <div id="gallery">
       <section class="opening" aria-labelledby="opening-title">
-        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>Portfolio</span><b>＋</b></div>
-        <div class="opening-content">
-          <h1 id="opening-title">Wesley<br><em>Bertolaia<span>.</span></em></h1>
-          <div class="opening-note"><p>Thoughtful websites. Tangible experiences.</p><p>From the first click to the next step.</p></div>
-          <a class="work-link" href="#selected-work" aria-label="Explore selected work"><svg viewBox="0 0 32 40" width="30" height="38" fill="none" aria-hidden="true"><path d="M16 2v34M4 24l12 12 12-12" stroke="currentColor" stroke-width="2"/></svg></a>
-        </div>
+        <div><p class="eyebrow">Hey, I’m</p><h1 id="opening-title">Wesley Bertolaia<span>.</span></h1><p class="intro-copy">Software developer. I make things for the web.<br><span>Have a look around. Click a few buttons.</span></p></div>
+        <div class="hello-doodle"><svg viewBox="0 0 160 160" fill="none" aria-hidden="true"><circle cx="80" cy="80" r="74" fill="currentColor"/><path d="M45 91c12 30 57 32 72-1" stroke="#292925" stroke-width="5" stroke-linecap="round"/><path d="M56 55v14m46-14v14" stroke="#292925" stroke-width="7" stroke-linecap="round"/></svg><span>nice to see you!</span></div>
       </section>
       <section id="selected-work" class="work" aria-labelledby="work-title">
-        <h2 id="work-title">Selected work</h2>
+        <div class="section-heading"><h2 id="work-title">A few things I’ve made</h2></div>
         <article class="work-project work-care">
           <a class="work-card" href="https://wesleybertolaia.github.io/carepath/">
-            <div class="work-caption"><div><h3>CarePath</h3><p>Online consultation funnel</p></div><span>View project</span></div>
+            <div class="work-caption"><div><h3>CarePath</h3><p>Online consultation funnel</p></div><span class="project-arrow" aria-hidden="true">↗</span></div>
             <div class="work-cover"><img src="./assets/carepath.png" width="1280" height="700" alt="CarePath consultation landing page"></div>
           </a>
         </article>
         <article class="work-project work-dental">
           <a class="work-card" href="https://wesleybertolaia.github.io/dentaldesk/patient.html">
-            <div class="work-caption"><div><h3>DentalDesk</h3><p>Patient booking · Angular</p></div><span>View project</span></div>
+            <div class="work-caption"><div><h3>DentalDesk</h3><p>Patient booking · Angular</p></div><span class="project-arrow" aria-hidden="true">↗</span></div>
             <div class="work-cover"><img src="./assets/dentaldesk.png" width="1280" height="700" loading="lazy" alt="DentalDesk patient booking interface"></div>
           </a>
         </article>
         <article class="work-project work-shift">
           <a class="work-card" href="https://wesleybertolaia.github.io/shiftledger/">
-            <div class="work-caption"><div><h3>ShiftLedger</h3><p>Employee onboarding · React</p></div><span>View project</span></div>
+            <div class="work-caption"><div><h3>ShiftLedger</h3><p>Time tracking · React</p></div><span class="project-arrow" aria-hidden="true">↗</span></div>
             <div class="work-cover"><img src="./assets/shiftledger.png" width="1280" height="700" loading="lazy" alt="ShiftLedger employee time tracker"></div>
           </a>
         </article>
       </section>
     </div>
   </main>
-  <footer class="site-footer"><span>© Wesley Bertolaia</span><a href="https://github.com/wesleybertolaia/">GitHub ↗</a><a href="./case-studies.html">Case studies</a></footer>
+  <footer class="site-footer"><span>Thanks for dropping by.</span><a href="./case-studies.html">Behind the projects ↗</a><a href="https://github.com/wesleybertolaia/">GitHub ↗</a></footer>
 </body>
 </html>
