@@ -2,7 +2,6 @@ const cards = [...document.querySelectorAll('.project-card')];
 const frame = document.querySelector('#demo-frame');
 const title = document.querySelector('#preview-title');
 const external = document.querySelector('#open-demo');
-const caseLink = document.querySelector('#read-case');
 const compact = matchMedia('(max-width: 740px)');
 let active = cards[0];
 const fitOnDesktop = matchMedia('(min-width: 1050px) and (min-height: 700px)');
@@ -47,6 +46,19 @@ function watchDemo() {
   const doc = frame.contentDocument;
   observedBody = doc?.body;
   if (!observedBody) return;
+
+  // The portfolio supplies navigation for its own embedded project pages.
+  const isProject = cards.some(card => {
+    const url = new URL(card.dataset.url);
+    return url.origin === doc.location.origin && url.pathname === doc.location.pathname;
+  });
+  if (isProject) {
+    const header = doc.querySelector('body > header');
+    if (header) {
+      header.style.display = 'none';
+      observedBody.style.display = 'flow-root';
+    }
+  }
   contentObserver = new MutationObserver(scheduleFit);
   contentObserver.observe(doc.body, {
     subtree: true, childList: true, characterData: true, attributes: true,
@@ -74,7 +86,6 @@ function select(card, focusPreview = false) {
     observedBody = undefined;
     frame.src = card.dataset.url;
     external.href = card.dataset.url;
-    caseLink.href = './case-studies.html#' + card.dataset.project;
   }
   if (focusPreview) title.focus();
 }
