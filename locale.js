@@ -1,5 +1,7 @@
 (() => {
   const messages = {
+    "Thoughtful websites. Tangible experiences.": "Sites bem pensados. Experiências concretas.",
+    "From the first click to the next step.": "Do primeiro clique ao próximo passo.",
     "Work": "Trabalhos",
     "Web design & frontend": "Design web e front-end",
     "Selected work": "Projetos selecionados",
@@ -133,7 +135,7 @@
       const next = new URL(location.href);
       next.searchParams.set('lang', select.value);
       const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
-      if (project) next.searchParams.set('demo', project);
+      if (project && !document.querySelector('#demos')?.hidden) next.searchParams.set('demo', project);
       try { localStorage.setItem(key, select.value); } catch { /* The URL carries the choice. */ }
       location.assign(next);
     });

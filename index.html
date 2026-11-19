@@ -6,27 +6,26 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=selected-work">
-  <script src="./locale.js?v=selected-work"></script>
-  <script src="./preview.js?v=selected-work" defer></script>
+  <link rel="stylesheet" href="./style.css?v=glass-20261118">
+  <script src="./locale.js?v=glass-20261118"></script>
+  <script src="./preview.js?v=glass-20261118" defer></script>
   <link rel="stylesheet" href="./locale.css">
 </head>
 <body>
-  <header class="wrap site-nav">
-    <a class="nav-work" href="./#selected-work">Work</a>
-    <nav aria-label="Main navigation">
-      <a href="./case-studies.html">Case studies</a>
-      <a href="https://github.com/wesleybertolaia/">GitHub</a>
-      <span data-language-menu></span>
-    </nav>
+  <header class="site-nav">
+    <a class="identity" href="./"><strong>Wesley Bertolaia<span>.</span></strong><small>Web design &amp; frontend</small></a>
+    <nav class="nav-pill" aria-label="Main navigation"><a class="nav-work" href="./#selected-work" aria-current="page">Work</a><a href="./case-studies.html">Case studies</a></nav>
+    <div class="nav-contact"><a href="https://github.com/wesleybertolaia/">GitHub <span aria-hidden="true">↗</span></a><span data-language-menu></span></div>
   </header>
   <main class="wrap">
     <div id="gallery">
       <section class="opening" aria-labelledby="opening-title">
-        <p class="eyebrow">Portfolio</p>
-        <h1 id="opening-title">Wesley <em>Bertolaia<span>.</span></em></h1>
-        <p class="opening-role">Web design &amp; frontend</p>
-        <a class="work-link" href="#selected-work">Explore selected work</a>
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>Portfolio</span><b>＋</b></div>
+        <div class="opening-content">
+          <h1 id="opening-title">Wesley<br><em>Bertolaia<span>.</span></em></h1>
+          <div class="opening-note"><p>Thoughtful websites. Tangible experiences.</p><p>From the first click to the next step.</p></div>
+          <a class="work-link" href="#selected-work" aria-label="Explore selected work"><svg viewBox="0 0 32 40" width="30" height="38" fill="none" aria-hidden="true"><path d="M16 2v34M4 24l12 12 12-12" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
       </section>
       <section id="selected-work" class="work" aria-labelledby="work-title">
         <h2 id="work-title">Selected work</h2>
@@ -74,5 +73,6 @@
       </section>
     </section>
   </main>
+  <footer class="site-footer"><span>© Wesley Bertolaia</span><a href="https://github.com/wesleybertolaia/">GitHub ↗</a><a href="./case-studies.html">Case studies</a></footer>
 </body>
 </html>
