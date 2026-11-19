@@ -68,3 +68,22 @@
 @media (max-width: 650px) {
   .demo-stage .work-cover { aspect-ratio: 1.6; }
 }
+.demo-stage { padding-bottom: 54px; }
+.demo-stage::after { left: 13px; bottom: 7px; z-index: -1; }
+.stage-dog {
+  bottom: 7px;
+  left: 29px;
+  height: 48px;
+  border: 0;
+  background: transparent;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.stage-dog i { inset: auto 0 10px; height: 33px; }
+.stage-dog b { visibility: hidden; }
+.is-pulling .stage-dog { cursor: grabbing; }
+.is-pulling .stage-dog b { visibility: visible; }
+.dog-hint { position: absolute; bottom: 16px; left: 103px; color: var(--muted); font-size: 13px; pointer-events: none; }

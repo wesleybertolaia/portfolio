@@ -1,5 +1,6 @@
 (() => {
   const messages = {
+    "Hold to pull the next project": "Segure para puxar o próximo projeto",
     "About": "Sobre",
     "Portfolio home": "Página inicial do portfólio",
     "Hey, I’m": "Oi, eu sou",
