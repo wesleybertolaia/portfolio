@@ -4,7 +4,9 @@ const frame = document.querySelector('#demo-frame');
 const title = document.querySelector('#preview-title');
 const external = document.querySelector('#open-demo');
 const compact = matchMedia('(max-width: 740px)');
-let active = cards[0];
+const gallery = document.querySelector('#gallery');
+const demos = document.querySelector('#demos');
+let active;
 const fitOnDesktop = matchMedia('(min-width: 1050px) and (min-height: 700px)');
 let contentObserver;
 let observedBody;
@@ -100,9 +102,9 @@ if (legacyHash === 'work' || cards.some(card => card.dataset.project === legacyH
 } else {
   const wanted = new URLSearchParams(location.search).get('demo');
   const requested = cards.find(card => card.dataset.project === wanted);
-  if (requested && requested !== active) select(requested);
-  else {
-    const source = localizedUrl(active.dataset.url);
-    if (frame.src !== source) frame.src = source;
+  if (requested || legacyHash === 'demos') {
+    gallery.hidden = true;
+    demos.hidden = false;
+    select(requested || cards[0]);
   }
 }

@@ -1,5 +1,13 @@
 (() => {
   const messages = {
+    "Work": "Trabalhos",
+    "Web design & frontend": "Design web e front-end",
+    "Selected work": "Projetos selecionados",
+    "Explore selected work": "Explorar projetos",
+    "View project": "Ver projeto",
+    "CarePath consultation landing page": "Página de consulta do CarePath",
+    "DentalDesk patient booking interface": "Interface de agendamento do DentalDesk",
+    "ShiftLedger employee time tracker": "Tela de registro de jornada do ShiftLedger",
     "Language": "Idioma",
     "Portfolio": "Portfólio",
     "Main navigation": "Navegação principal",
@@ -92,8 +100,8 @@
         if (node.parentElement?.matches('option:not([value])')) node.parentElement.value = node.data.trim();
         node.data = translated;
       }
-      for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], meta[name="description"]')) {
-        for (const attribute of ['aria-label', 'title', 'placeholder', 'content']) {
+      for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], [alt], meta[name="description"]')) {
+        for (const attribute of ['aria-label', 'title', 'placeholder', 'alt', 'content']) {
           if (item.hasAttribute(attribute)) item.setAttribute(attribute, t(item.getAttribute(attribute)));
         }
       }

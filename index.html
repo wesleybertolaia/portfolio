@@ -6,24 +6,51 @@
   <meta name="description" content="Wesley Bertolaia’s web design portfolio. Three shipped prototypes in consultation acquisition, patient booking, and employee onboarding.">
   <title>Wesley Bertolaia | Web Design & Frontend</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=masthead-type">
-  <script src="./locale.js"></script>
-  <script src="./preview.js?v=languages" defer></script>
+  <link rel="stylesheet" href="./style.css?v=selected-work">
+  <script src="./locale.js?v=selected-work"></script>
+  <script src="./preview.js?v=selected-work" defer></script>
   <link rel="stylesheet" href="./locale.css">
 </head>
 <body>
-  <header class="wrap masthead">
-    <div>
-      <p class="eyebrow">Portfolio</p>
-      <h1>Wesley Bertolaia<span>.</span></h1>
-    </div>
+  <header class="wrap site-nav">
+    <a class="nav-work" href="./#selected-work">Work</a>
     <nav aria-label="Main navigation">
       <a href="./case-studies.html">Case studies</a>
       <a href="https://github.com/wesleybertolaia/">GitHub</a>
-    <span data-language-menu></span></nav>
+      <span data-language-menu></span>
+    </nav>
   </header>
   <main class="wrap">
-    <section class="shelf" id="demos" aria-label="Live project demos">
+    <div id="gallery">
+      <section class="opening" aria-labelledby="opening-title">
+        <p class="eyebrow">Portfolio</p>
+        <h1 id="opening-title">Wesley <em>Bertolaia<span>.</span></em></h1>
+        <p class="opening-role">Web design &amp; frontend</p>
+        <a class="work-link" href="#selected-work">Explore selected work</a>
+      </section>
+      <section id="selected-work" class="work" aria-labelledby="work-title">
+        <h2 id="work-title">Selected work</h2>
+        <article class="work-project work-care">
+          <a class="work-card" href="./?demo=carepath#demos">
+            <div class="work-caption"><div><h3>CarePath</h3><p>Online consultation funnel</p></div><span>View project</span></div>
+            <div class="work-cover"><img src="./assets/carepath.png" width="1280" height="700" alt="CarePath consultation landing page"></div>
+          </a>
+        </article>
+        <article class="work-project work-dental">
+          <a class="work-card" href="./?demo=dentaldesk#demos">
+            <div class="work-caption"><div><h3>DentalDesk</h3><p>Patient booking · Angular</p></div><span>View project</span></div>
+            <div class="work-cover"><img src="./assets/dentaldesk.png" width="1280" height="700" loading="lazy" alt="DentalDesk patient booking interface"></div>
+          </a>
+        </article>
+        <article class="work-project work-shift">
+          <a class="work-card" href="./?demo=shiftledger#demos">
+            <div class="work-caption"><div><h3>ShiftLedger</h3><p>Employee onboarding · React</p></div><span>View project</span></div>
+            <div class="work-cover"><img src="./assets/shiftledger.png" width="1280" height="700" loading="lazy" alt="ShiftLedger employee time tracker"></div>
+          </a>
+        </article>
+      </section>
+    </div>
+    <section class="shelf" id="demos" hidden aria-label="Live project demos">
       <div class="project-list">
         <h2>Projects</h2>
         <div class="project-cards">
@@ -43,7 +70,7 @@
           <h2 id="preview-title" tabindex="-1" aria-live="polite">CarePath live demo</h2>
           <a id="open-demo" href="https://wesleybertolaia.github.io/carepath/">Open full site</a>
         </header>
-        <iframe id="demo-frame" title="CarePath live demo" src="https://wesleybertolaia.github.io/carepath/"></iframe>
+        <iframe id="demo-frame" title="CarePath live demo"></iframe>
       </section>
     </section>
   </main>
