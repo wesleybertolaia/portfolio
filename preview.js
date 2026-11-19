@@ -1,3 +1,4 @@
+const { t, url: localizedUrl } = window.siteLocale;
 const cards = [...document.querySelectorAll('.project-card')];
 const frame = document.querySelector('#demo-frame');
 const title = document.querySelector('#preview-title');
@@ -80,12 +81,12 @@ function select(card, focusPreview = false) {
     active = card;
     for (const item of cards) item.setAttribute('aria-pressed', String(item === card));
     const name = card.querySelector('strong').textContent;
-    title.textContent = name + ' live demo';
-    frame.title = name + ' live demo';
+    title.textContent = t(name + ' live demo');
+    frame.title = title.textContent;
     contentObserver?.disconnect();
     observedBody = undefined;
-    frame.src = card.dataset.url;
-    external.href = card.dataset.url;
+    frame.src = localizedUrl(card.dataset.url);
+    external.href = localizedUrl(card.dataset.url);
   }
   if (focusPreview) title.focus();
 }
@@ -95,9 +96,13 @@ for (const card of cards) {
 }
 const legacyHash = location.hash.slice(1);
 if (legacyHash === 'work' || cards.some(card => card.dataset.project === legacyHash)) {
-  location.replace('./case-studies.html' + (legacyHash === 'work' ? '' : '#' + legacyHash));
+  location.replace(localizedUrl('./case-studies.html' + (legacyHash === 'work' ? '' : '#' + legacyHash)));
 } else {
   const wanted = new URLSearchParams(location.search).get('demo');
   const requested = cards.find(card => card.dataset.project === wanted);
-  if (requested) select(requested);
+  if (requested && requested !== active) select(requested);
+  else {
+    const source = localizedUrl(active.dataset.url);
+    if (frame.src !== source) frame.src = source;
+  }
 }
