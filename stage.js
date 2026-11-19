@@ -4,17 +4,12 @@ const controls = document.createElement('div');
 controls.className = 'stage-controls';
 const stage = document.createElement('div');
 stage.className = 'demo-stage';
-const dog = document.createElement('button');
-const holdingLabel = window.siteLocale.t('Hold to pull the next project');
-dog.type = 'button';
+const dog = document.createElement('div');
 dog.className = 'stage-dog';
-dog.setAttribute('aria-label', holdingLabel);
-dog.innerHTML = '<i aria-hidden="true"></i><b aria-hidden="true"></b>';
-const hint = document.createElement('span');
-hint.className = 'dog-hint';
-hint.textContent = holdingLabel;
+dog.setAttribute('aria-hidden', 'true');
+dog.innerHTML = '<i></i><b></b>';
 gallery.append(controls, stage);
-stage.append(...projects, dog, hint);
+stage.append(...projects, dog);
 
 let active = 0;
 let animations = [];
@@ -29,14 +24,13 @@ const buttons = projects.map((project, index) => {
   return button;
 });
 
-function select(index, animateScreen = true) {
-  cancelPull();
+function select(index) {
   if (index === active) return;
   for (const animation of animations) animation.cancel();
   const previous = projects[active];
   const next = projects[index];
   active = index;
-  const animate = animateScreen && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animate = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   buttons.forEach((button, position) => button.setAttribute('aria-pressed', String(index === position)));
   for (const project of projects) {
     project.hidden = project !== next && (!animate || project !== previous);
@@ -53,7 +47,14 @@ function select(index, animateScreen = true) {
     { transform: 'translateX(23%)', opacity: 0 },
     { transform: 'translateX(0)', opacity: 1 }
   ], { duration: 470, delay: 280, easing: 'ease-out', fill: 'both' });
-  animations = [outgoing, incoming];
+  const tug = dog.animate([
+    { transform: 'translateY(20px)', opacity: 0 },
+    { transform: 'translate(36px, -24px)', opacity: 1, offset: .34 },
+    { transform: 'translate(-30px, -22px)', opacity: 1, offset: .72 },
+    { transform: 'translate(-30px, 18px)', opacity: 0 }
+  ], { duration: 750, easing: 'ease-in-out' });
+
+  animations = [outgoing, incoming, tug];
   incoming.onfinish = () => {
     previous.hidden = true;
     previous.classList.remove('screen-leaving');
@@ -61,58 +62,3 @@ function select(index, animateScreen = true) {
     animations = [];
   };
 }
-
-let pull;
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-
-function cancelPull() {
-  if (!pull) return;
-  clearTimeout(pull.timer);
-  pull.screen?.cancel();
-  pull.dog?.cancel();
-  pull = undefined;
-  stage.classList.remove('is-pulling');
-}
-
-function startPull() {
-  if (pull) return;
-  for (const animation of animations) animation.finish();
-  stage.classList.add('is-pulling');
-  const duration = 850;
-  pull = {
-    timer: setTimeout(() => select((active + 1) % projects.length, false), duration)
-  };
-  if (reducedMotion.matches) return;
-  const options = { duration, easing: 'ease-in', fill: 'forwards' };
-  pull.screen = projects[active].animate([
-    { transform: 'translateX(0)' },
-    { transform: 'translateX(-110%) rotate(-4deg)' }
-  ], options);
-  pull.dog = dog.animate([
-    { transform: 'translateX(0)' },
-    { transform: 'translateX(-26px) rotate(-14deg)' }
-  ], options);
-}
-
-dog.addEventListener('pointerdown', event => {
-  if (!event.isPrimary || event.button !== 0) return;
-  dog.setPointerCapture(event.pointerId);
-  startPull();
-});
-for (const event of ['pointerup', 'pointercancel', 'lostpointercapture', 'blur']) {
-  dog.addEventListener(event, cancelPull);
-}
-const isHoldKey = event => event.key === ' ' || event.key === 'Enter';
-dog.addEventListener('keydown', event => {
-  if (!isHoldKey(event)) return;
-  event.preventDefault();
-  if (!event.repeat) startPull();
-});
-dog.addEventListener('keyup', event => {
-  if (!isHoldKey(event)) return;
-  event.preventDefault();
-  cancelPull();
-});
-dog.addEventListener('click', event => {
-  if (event.detail === 0) select((active + 1) % projects.length);
-});

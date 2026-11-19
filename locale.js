@@ -1,6 +1,5 @@
 (() => {
   const messages = {
-    "Hold to pull the next project": "Segure para puxar o próximo projeto",
     "About": "Sobre",
     "Portfolio home": "Página inicial do portfólio",
     "Hey, I’m": "Oi, eu sou",
@@ -14,7 +13,7 @@
     "A little about me": "Um pouco sobre mim",
     "Hi again": "Oi de novo",
     "I’m Wesley Bertolaia, a software developer who builds things for the web.": "Sou Wesley Bertolaia, desenvolvedor de software. Crio sites e aplicações para a web.",
-    "Here you’ll find a few hands-on projects, from booking a dental visit to keeping track of a workday.": "Aqui você encontra alguns projetos práticos, de marcar uma consulta odontológica a registrar um dia de trabalho. ",
+    "Here you’ll find a few hands-on projects, from booking a dental visit to keeping track of a workday. Small details, real buttons, things you can actually try.": "Aqui você encontra alguns projetos práticos, de marcar uma consulta odontológica a registrar um dia de trabalho. Pequenos detalhes, botões de verdade, coisas que você pode experimentar.",
     "Feel free to poke around. The demos use sample data.": "Fique à vontade para explorar. As demos usam dados de exemplo.",
     "Find me on GitHub": "Me encontre no GitHub",
     "Less fuss.": "Menos complicação.",
