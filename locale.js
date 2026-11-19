@@ -1,58 +1,5 @@
 (() => {
   const messages = {
-    "About": "Sobre",
-    "Portfolio home": "Página inicial do portfólio",
-    "Hey, I’m": "Oi, eu sou",
-    "Software developer. I make things for the web.": "Desenvolvedor de software. Crio coisas para a web.",
-    "Have a look around. Click a few buttons.": "Explore à vontade. Clique em alguns botões.",
-    "nice to see you!": "bom te ver aqui!",
-    "A few things I’ve made": "Algumas coisas que criei",
-    "Time tracking · React": "Registro de jornada · React",
-    "Thanks for dropping by.": "Valeu pela visita.",
-    "Behind the projects ↗": "Por trás dos projetos ↗",
-    "A little about me": "Um pouco sobre mim",
-    "Hi again": "Oi de novo",
-    "I’m Wesley Bertolaia, a software developer who builds things for the web.": "Sou Wesley Bertolaia, desenvolvedor de software. Crio sites e aplicações para a web.",
-    "Here you’ll find a few hands-on projects, from booking a dental visit to keeping track of a workday. Small details, real buttons, things you can actually try.": "Aqui você encontra alguns projetos práticos, de marcar uma consulta odontológica a registrar um dia de trabalho. Pequenos detalhes, botões de verdade, coisas que você pode experimentar.",
-    "Feel free to poke around. The demos use sample data.": "Fique à vontade para explorar. As demos usam dados de exemplo.",
-    "Find me on GitHub": "Me encontre no GitHub",
-    "Less fuss.": "Menos complicação.",
-    "More doing.": "Mais ação.",
-
-    "Info": "Sobre",
-    "Software Developer": "Desenvolvedor de Software",
-    "About me": "Sobre mim",
-    "Wesley Bertolaia | Info": "Wesley Bertolaia | Sobre",
-    "I’m Wesley. I turn ideas into": "Sou Wesley. Transformo ideias em",
-    "working experiences.": "experiências reais.",
-    "My work and approach": "Meu trabalho e minha abordagem",
-    "Software Developer.": "Desenvolvedor de Software.",
-    "I build websites and interactive applications. My portfolio brings together three projects that explore healthcare, appointment booking, and employee time tracking.": "Desenvolvo sites e aplicações interativas. Meu portfólio reúne três projetos que exploram saúde, agendamento de consultas e registro de jornada.",
-    "Each one connects a visual interface to a working flow you can try in your browser.": "Cada um conecta uma interface visual a um fluxo funcional que você pode experimentar no navegador.",
-    "A little about my work — alongside a closer look at the projects I’ve built.": "Um pouco sobre meu trabalho — e um olhar mais próximo dos projetos que desenvolvi.",
-    "From interface to interaction.": "Da interface à interação.",
-    "CarePath explores the first steps of an online consultation. DentalDesk walks through a dental appointment request. ShiftLedger connects employee time entries with a manager’s overview.": "CarePath explora os primeiros passos de uma consulta online. DentalDesk apresenta uma solicitação de atendimento odontológico. ShiftLedger conecta os registros de jornada dos funcionários à visão do gestor.",
-    "These are portfolio prototypes with sample data, built to make the full interaction tangible.": "São protótipos de portfólio com dados de exemplo, criados para demonstrar a interação completa.",
-    "Explore the details.": "Explore os detalhes.",
-    "You can try the projects, read the thinking behind each flow, and explore the code on GitHub.": "Você pode experimentar os projetos, conhecer as decisões por trás de cada fluxo e explorar o código no GitHub.",
-    "Read the case studies": "Leia os estudos de caso",
-    "Selected projects": "Projetos selecionados",
-    "Patient booking": "Agendamento de pacientes",
-    "Employee time tracking": "Registro de jornada",
-    "Find me online": "Onde me encontrar",
-    "Let’s connect.": "Vamos conversar.",
-    "Meet Wesley Bertolaia, Software Developer. Explore his web projects and approach to interactive experiences.": "Conheça Wesley Bertolaia, desenvolvedor de software. Explore seus projetos web e sua abordagem para experiências interativas.",
-
-    "Thoughtful websites. Tangible experiences.": "Sites bem pensados. Experiências concretas.",
-    "From the first click to the next step.": "Do primeiro clique ao próximo passo.",
-    "Work": "Trabalhos",
-    "Web design & frontend": "Design web e front-end",
-    "Selected work": "Projetos selecionados",
-    "Explore selected work": "Explorar projetos",
-    "View project": "Ver projeto",
-    "CarePath consultation landing page": "Página de consulta do CarePath",
-    "DentalDesk patient booking interface": "Interface de agendamento do DentalDesk",
-    "ShiftLedger employee time tracker": "Tela de registro de jornada do ShiftLedger",
     "Language": "Idioma",
     "Portfolio": "Portfólio",
     "Main navigation": "Navegação principal",
@@ -145,8 +92,8 @@
         if (node.parentElement?.matches('option:not([value])')) node.parentElement.value = node.data.trim();
         node.data = translated;
       }
-      for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], [alt], meta[name="description"]')) {
-        for (const attribute of ['aria-label', 'title', 'placeholder', 'alt', 'content']) {
+      for (const item of root.querySelectorAll('[aria-label], [title], [placeholder], meta[name="description"]')) {
+        for (const attribute of ['aria-label', 'title', 'placeholder', 'content']) {
           if (item.hasAttribute(attribute)) item.setAttribute(attribute, t(item.getAttribute(attribute)));
         }
       }
@@ -178,7 +125,7 @@
       const next = new URL(location.href);
       next.searchParams.set('lang', select.value);
       const project = document.querySelector('.project-card[aria-pressed="true"]')?.dataset.project;
-      if (project && !document.querySelector('#demos')?.hidden) next.searchParams.set('demo', project);
+      if (project) next.searchParams.set('demo', project);
       try { localStorage.setItem(key, select.value); } catch { /* The URL carries the choice. */ }
       location.assign(next);
     });
